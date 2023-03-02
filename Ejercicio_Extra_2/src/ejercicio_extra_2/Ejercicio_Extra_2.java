@@ -9,6 +9,7 @@ import Entidades.Espectador;
 import Entidades.Pelicula;
 import Entidades.SalaCine;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -22,6 +23,9 @@ public class Ejercicio_Extra_2 {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        Scanner leer = new Scanner(System.in).useDelimiter("\n");
+        
+        int opcionMenu=0;
         ArrayList <Pelicula> peliculas= new ArrayList<>();
         ArrayList <Espectador> espectadores=new ArrayList<>();
         
@@ -41,10 +45,25 @@ public class Ejercicio_Extra_2 {
         SalaCine sala1 = new SalaCine(8,6,peliculas.get(0),espectadores);
         Cine c1 = new Cine(peliculas,sala1,6.50f);
         
-        
-                
-        System.out.println(c1.toString());
-        c1.getSala().mostrarSala();
+        //c1.asignarAsiento();
+        do{
+            System.out.println("..:: MENU ::..");
+            System.out.println("1. Venta de Entrada");
+            System.out.println("2. Ingresar Espectador");
+            System.out.println("3. Ingresar Película");
+            System.out.println("4. Mostrar Salas");
+            System.out.println("5. Importar Espectadores");
+            System.out.println("6. Salir");
+            System.out.print("Elija una Opción: ");
+            opcionMenu=leer.nextInt();
+            switch (opcionMenu) {
+                case 4 -> c1.getSala().mostrarSala();
+                case 5 -> c1.importarEspectadores();
+                default -> opcionMenu=-1;
+            }
+        }while(opcionMenu>0 && opcionMenu<6);
+        //System.out.println(c1.toString());        
+       // c1.getSala().mostrarSala();
     }
     
 }
