@@ -42,7 +42,9 @@ public class Ejercicio_Extra_2 {
         espectadores.add(new Espectador("Marcos", 11, 20,""));
         espectadores.add(new Espectador("Manuel", 16, 7.5f,""));
         
-        SalaCine sala1 = new SalaCine(8,6,peliculas.get(0),espectadores);
+        SalaCine sala1 = new SalaCine(8,6,peliculas.get(1),espectadores);
+        SalaCine sala2 = new SalaCine(8,6,peliculas.get(0),espectadores);
+        
         Cine c1 = new Cine(peliculas,sala1,6.50f);
         
         //c1.asignarAsiento();
@@ -52,16 +54,20 @@ public class Ejercicio_Extra_2 {
             System.out.println("2. Ingresar Espectador");
             System.out.println("3. Ingresar Película");
             System.out.println("4. Mostrar Salas");
-            System.out.println("5. Importar Espectadores");
-            System.out.println("6. Salir");
+            System.out.println("5. Mostrar Espectadores");
+            System.out.println("6. Asignar Asientos Bloque");
+            System.out.println("7. Salir");
             System.out.print("Elija una Opción: ");
             opcionMenu=leer.nextInt();
             switch (opcionMenu) {
+                case 2 -> c1.getSala().ingresarEspectador();
+                case 3 -> c1.ingresarPelicula();
                 case 4 -> c1.getSala().mostrarSala();
-                case 5 -> c1.importarEspectadores();
+                case 5 -> System.out.println(c1.getSala().getEspectadores().toString().replace(",", ""));  
+                case 6 -> c1.importarEspectadores();
                 default -> opcionMenu=-1;
             }
-        }while(opcionMenu>0 && opcionMenu<6);
+        }while(opcionMenu>0 && opcionMenu<7);
         //System.out.println(c1.toString());        
        // c1.getSala().mostrarSala();
     }
